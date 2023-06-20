@@ -7,10 +7,9 @@ public class USSD {
     public void mainMenu(Account user) {
         Scanner input = new Scanner(System.in);
 
+        Menu.displayMainMenu();
 
-        System.out.println("1. Buy Airtime or Data");
-        System.out.println("2. Cash");
-        System.out.println("3. Settings");
+
         int choice = input.nextInt();
 
         switch(choice){
@@ -39,9 +38,7 @@ public class USSD {
         String choice;
 
 
-        System.out.println("1. Buy Airtime");
-        System.out.println("2. Buy Data");
-        System.out.println("00. Go Back");
+        Menu.displayAirtimeDataMenu();
         choice = scanner.nextLine();
 
         switch(choice){
@@ -64,9 +61,7 @@ public class USSD {
         Scanner scanner = new Scanner(System.in);
         String choice;
 
-        System.out.printf("1. Buy %s for yourself\n", commodity);
-        System.out.printf("2. Buy %s for someone\n", commodity);
-        System.out.println("00. Go Back");
+        Menu.displayPurchaseForMenu(commodity);
 
         choice = scanner.nextLine();
 
@@ -102,8 +97,7 @@ public class USSD {
         Scanner scanner = new Scanner(System.in);
         String choice;
 
-        System.out.println("1. Enter the amount you want to buy");
-        System.out.println("00. Go Back");
+        Menu.displayPurchaseAmountMenu();
 
         choice = scanner.nextLine();
 
@@ -111,7 +105,7 @@ public class USSD {
             case "1"->{
                 Scanner input = new Scanner(System.in);
                 System.out.println("Enter the amount: ");
-                double amount = input.nextInt();
+                double amount = input.nextDouble();
 
                 confirmPurchase(amount,user,commodity);
             }
@@ -132,11 +126,8 @@ public class USSD {
         Scanner scanner = new Scanner(System.in);
         String choice;
 
+        Menu.displayConfirmPurchaseaMenu();
 
-        System.out.println("Are you sure you want to buy");
-        System.out.println("1. Yes");
-        System.out.println("2. Cancel");
-        System.out.println("00. Go Back");
         choice = scanner.nextLine();
         switch(choice){
             case "1"-> user.purchase(amount, commodity);
